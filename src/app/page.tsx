@@ -38,20 +38,21 @@ export default function Home() {
         <Button text="Entrar" />
         <Github text="Ou se preferir" />
 
-        <div className="border-t-0.5 mx-2 mb-2 mt-10 border-zinc-400" />
+        <div className="mx-2 mb-2 mt-10 border-t-0.5 border-zinc-400" />
 
-        <div className="duration-400 fle mx-2 flex h-24 w-96 items-center justify-between bg-indigo-950 shadow-md transition-colors hover:bg-indigo-900">
-          <LuBuilding2 className="ml-4 h-8 w-8 text-bg" />
-
-          <div className="grid items-center">
-            <span className="text-sm font-medium text-zinc-300">
-              Não tem uma conta?
-            </span>
-            <span className="text-sm font-medium text-bg">
-              Se increva gratuitamente
-            </span>
+        <div className="duration-400 fle group mx-2 flex h-24 w-96 items-center justify-between bg-indigo-950 shadow-md transition-colors hover:bg-indigo-900">
+          <div className="flex items-center gap-3">
+            <LuBuilding2 className="ml-4 h-8 w-8 text-bg transition-colors duration-200 group-hover:text-purple-400" />
+            <div className="grid">
+              <span className="text-sm font-medium text-zinc-300 transition-colors duration-200 group-hover:text-zinc-100">
+                Não tem uma conta?
+              </span>
+              <span className="text-sm font-medium text-bg transition-colors duration-200 group-hover:text-purple-400">
+                Se increva gratuitamente
+              </span>
+            </div>
           </div>
-          <FaChevronRight className="mr-4 h-4 w-4 text-zinc-400" />
+          <FaChevronRight className="mr-4 h-4 w-4 text-zinc-400 transition-colors duration-200 group-hover:text-zinc-200" />
         </div>
       </div>
     </div>
