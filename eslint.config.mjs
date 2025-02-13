@@ -1,17 +1,21 @@
-export default {
-  env: {
-    node: true,
-    es2021: true,
+export default [
+  eslint.configs.recommended,
+  {
+    extends: ["prettier"],
+    languageOptions: {
+      ecmaVersion: "latest",
+    },
+    settings: {
+      node: true,
+    },
+    plugins: {
+      node,
+    },
+    rules: {
+      indent: ["error", 2],
+      "linebreak-style": ["error", "unix"],
+      quotes: ["error", "single"],
+      semi: ["error", "always"],
+    },
   },
-  extends: ["eslint:recommended", "plugin:node/recommended"],
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-  },
-  rules: {
-    indent: ["error", 2],
-    "linebreak-style": ["error", "unix"],
-    quotes: ["error", "single"],
-    semi: ["error", "always"],
-  },
-};
+];
