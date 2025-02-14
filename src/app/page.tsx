@@ -10,7 +10,7 @@ import { LuBuilding2 } from "react-icons/lu";
 import { FaChevronRight } from "react-icons/fa";
 import Link from "next/link";
 
-export default function Home() {
+export default function Singin() {
   return (
     <div className="fixed flex">
       <main className="flex h-mainColorSpace w-mainColorSpace items-center justify-center bg-bg">
