@@ -32,6 +32,7 @@ export function Input(props: InputProps) {
           placeholder={props.placeholder}
           onFocus={handleBorderColor}
           onBlur={resetBorderColor}
+          onChange={props.onChange}
         />
       </div>
     </label>
