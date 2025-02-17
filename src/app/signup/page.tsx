@@ -9,6 +9,7 @@ import { Github } from "@/components/GithubButton";
 import { useState } from "react";
 import { api } from "@/services/api";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 
 const schema = z.object({
   fullname: z.string().min(10, "Nome completo é obrigatório"),
@@ -21,6 +22,7 @@ export default function Signup() {
   const [fullname, setFullName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const [errors, setErrors] = useState<{
     fullname?: string;
     email?: string;
@@ -45,10 +47,14 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      await api.post("/customer", { fullname, email, password });
+      const res = await api.post("/customer", { fullname, email, password });
       setEmail("");
       setPassword("");
       setFullName("");
+
+      if (res.status === 201) {
+        router.push("/home");
+      }
     } catch (error: any) {
       setErrors({
         email: error.response?.data?.message || "Erro ao cadastrar usuário",
