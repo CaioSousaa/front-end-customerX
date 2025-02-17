@@ -31,31 +31,28 @@ export default function Signup() {
     event.preventDefault();
 
     const result = schema.safeParse({ fullname, email, password });
-
     if (!result.success) {
-      const errorMessages: any = {};
-      result.error.errors.forEach((err) => {
-        errorMessages[err.path[0]] = err.message;
-      });
-      setErrors(errorMessages);
+      setErrors(
+        result.error.errors.reduce(
+          (acc, err) => ({ ...acc, [err.path[0]]: err.message }),
+          {},
+        ),
+      );
       return;
     }
 
     setErrors({});
-
     setLoading(true);
-    try {
-      await api.post("/customer", {
-        fullname,
-        email,
-        password,
-      });
 
+    try {
+      await api.post("/customer", { fullname, email, password });
       setEmail("");
       setPassword("");
       setFullName("");
-    } catch (error) {
-      console.error("Erro ao cadastrar usuário:", error);
+    } catch (error: any) {
+      setErrors({
+        email: error.response?.data?.message || "Erro ao cadastrar usuário",
+      });
     } finally {
       setLoading(false);
     }
